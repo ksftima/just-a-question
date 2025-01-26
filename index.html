@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Fredoka+One&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Be My Valentine?</title>
+    <style>
+        body {
+            font-family: 'Dancing Script', cursive, sans-serif;
+            text-align: center;
+            background-color: #fef2db;
+            color: #ba0001;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        #message {
+            font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-size: 1.2rem;
+            color: #ba0001;
+            border-radius: 15px
+            max-width: 80%;
+        }
+
+        .buttons {
+            margin-top: 20px;
+        }
+
+        button {
+            font-family: 'Pacifico', cursive, sans-serif;
+            font-size: 1.2rem;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            margin: 10px;
+            transition: all 0.3s;
+        }
+
+        button#yes {
+            background-color: #ba0001;
+            color: white;
+        }
+
+        button#no {
+            background-color: #ba0001;
+            color: white;
+        }
+
+        img {
+            max-width: 300px;
+            border-radius: 15px;
+            margin-top: 20px;
+            display: block;
+        }
+
+        #mainImage {
+            max-width: 400px;
+            border-radius: 20px;
+            margin-bottom: 20px;
+        }
+
+        .image-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        #yayVideo {
+            display: none;
+            margin-top: 20px;
+            width: 50%; 
+            height: 250px; 
+            overflow: hidden;
+            border-radius: 20px; 
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; 
+        }
+    </style>
+</head>
+<body>
+    <div class="image-container">
+        <div id="message" style="display: none;"></div>
+        <img id="mainImage" src="https://media1.tenor.com/m/MKkJWYigjycAAAAd/cute-cat-cat-cute.gif" alt="Cat meme">
+    </div>
+
+    <h1> hi bacha, will you be my valentine?🫰🏽 </h1>
+
+    <div class="buttons">
+        <button id="yes">yes</button>
+        <button id="no">no</button>
+    </div>
+
+    <img id="cuteImage" src="" alt="" style="display: none;">
+    
+    <!-- YouTube iframe -->
+    <div id="yayVideo" style="display:none;">
+        <iframe src="https://www.youtube.com/embed/IxX_QHay02M?start=29&end=60" title="W&amp;W - OIIA OIIA (Spinning Cat)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+
+    <script>
+        const noButton = document.getElementById('no');
+        const yesButton = document.getElementById('yes');
+        const mainImage = document.getElementById('mainImage');
+        const cuteImage = document.getElementById('cuteImage');
+        const message = document.getElementById('message');
+        const yayVideo = document.getElementById('yayVideo');
+
+        const noImages = [
+            'https://media.tenor.com/j5rPRPBwSOMAAAAM/cat-smacking-other-cat-cat.gif',
+            'https://media1.tenor.com/m/SwdQ-uyVAqcAAAAd/cat-cat-meme.gif',
+            'https://media1.tenor.com/m/tVlKEj4YcG8AAAAd/swankaids-aidan.gif'
+        ];
+
+        const noMessages = [
+            'how dare you!!!😡',
+            'mmmm rugarugaruga 😾',
+            'hmphhh! look what you did to uni😤'
+        ];
+
+        let clickCountNo = 0;
+        let clickCountYes = 0;
+
+        function updateImagesAndMessage(choice) {
+            message.style.display = 'block';
+
+            if (choice === 'no') {
+                mainImage.src = noImages[clickCountNo % noImages.length];
+                cuteImage.style.display = 'none'; 
+                message.textContent = noMessages[clickCountNo % noMessages.length];
+                clickCountNo++;
+            } else if (choice === 'yes') {
+                mainImage.src = yesImage; 
+                cuteImage.style.display = 'none'; 
+                message.textContent = 'yippee yipeee yipeee!🎉🥳';
+                yayVideo.style.display = 'block'; // Show the YouTube iframe
+                clickCountYes++;
+            }
+
+            mainImage.style.display = 'block';
+        }
+
+        noButton.addEventListener('click', () => {
+            yayVideo.style.display = 'none'; // Hide the iframe
+            updateImagesAndMessage('no');
+        });
+
+        yesButton.addEventListener('click', () => {
+    // Change the h1 text
+            const headerText = document.querySelector('h1');
+            headerText.textContent = "cool bro sounds fun 🫱🏻‍🫲🏽 here's a chill video..."; 
+
+            // Hide the buttons
+            document.querySelector('.buttons').style.display = 'none';
+
+            // Hide the main image and message
+            mainImage.style.display = 'none';
+            message.style.display = 'none';
+
+            // Show the video
+            yayVideo.style.display = 'block';
+        });
+
+    </script>
+</body>
+</html>
